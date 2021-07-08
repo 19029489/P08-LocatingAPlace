@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        LatLng poi_sg = new LatLng(1.3516401888557787, 103.88618631682859);
         LatLng poi_north = new LatLng(1.441298071560513, 103.77223096441789);
         LatLng poi_central = new LatLng(1.2979457412173014, 103.84743732023901);
         LatLng poi_east = new LatLng(1.3491987129314225, 103.93581286441788);
@@ -45,10 +46,12 @@ public class MainActivity extends AppCompatActivity {
         spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (map != null){
+                if (map != null) {
                     if (position == 0) {
-                        map.moveCamera(CameraUpdateFactory.newLatLngZoom(poi_north, 15));
+                        map.moveCamera(CameraUpdateFactory.newLatLngZoom(poi_sg, 10));
                     } else if (position == 1) {
+                        map.moveCamera(CameraUpdateFactory.newLatLngZoom(poi_north, 15));
+                    } else if (position == 2) {
                         map.moveCamera(CameraUpdateFactory.newLatLngZoom(poi_central, 15));
                     } else {
                         map.moveCamera(CameraUpdateFactory.newLatLngZoom(poi_east, 15));
@@ -69,8 +72,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onMapReady(GoogleMap googleMap) {
                 map = googleMap;
-
-                LatLng poi_sg = new LatLng(1.3516401888557787, 103.88618631682859);
 
                 map.moveCamera(CameraUpdateFactory.newLatLngZoom(poi_sg, 10));
 
